@@ -1,0 +1,9 @@
+*
+!.gitignore
+!lib/
+!lib/**
+!src/
+!src/**
+!package.json
+!LICENSE
+!README.md

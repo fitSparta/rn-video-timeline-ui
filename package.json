@@ -1,0 +1,99 @@
+{
+  "name": "rn-video-timeline-ui",
+  "version": "0.1.0",
+  "description": "React Native video timeline UI component",
+  "main": "./lib/module/index.js",
+  "types": "./lib/typescript/src/index.d.ts",
+  "exports": {
+    ".": {
+      "source": "./src/index.tsx",
+      "types": "./lib/typescript/src/index.d.ts",
+      "default": "./lib/module/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "lib",
+    "android",
+    "ios",
+    "cpp",
+    "*.podspec",
+    "react-native.config.js",
+    "!ios/build",
+    "!android/build",
+    "!android/gradle",
+    "!android/gradlew",
+    "!android/gradlew.bat",
+    "!android/local.properties",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__",
+    "!**/.*"
+  ],
+  "scripts": {
+    "example": "npm --prefix example run",
+    "clean": "del-cli android/build example/android/build example/android/.gradle example/node_modules/rn-video-timeline-ui example/dist example/android/app/build example/ios/build lib package-lock.json example/package-lock.json",
+    "prepare": "bob build",
+    "typecheck": "tsc"
+  },
+  "keywords": [
+    "react-native",
+    "ios",
+    "android"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fitSparta/rn-video-timeline-ui.git"
+  },
+  "author": "bacek97 <kostin.vasiliy97@gmail.com> (https://github.com/bacek97)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fitSparta/rn-video-timeline-ui/issues"
+  },
+  "homepage": "https://github.com/fitSparta/rn-video-timeline-ui#readme",
+  "publishConfig": {
+    "registry": "ftp://registrynpmjsorg/"
+  },
+  "devDependencies": {
+    "@react-native/babel-preset": "0.85.0",
+    "@types/react": "^19.2.0",
+    "del-cli": "^7.0.0",
+    "react-native": "0.85.0",
+    "react-native-builder-bob": "^0.41.0",
+    "turbo": "^2.8.21",
+    "typescript": "^6.0.2"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*",
+    "react-native-web": "*",
+    "react-native-reanimated": "*",
+    "react-native-gesture-handler": "*"
+  },
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      [
+        "module",
+        {
+          "esm": true,
+        "configFile": true
+        }
+      ],
+      [
+        "typescript",
+        {
+          "project": "tsconfig.build.json"
+        }
+      ]
+    ]
+  },
+  "create-react-native-library": {
+    "type": "library",
+    "languages": "js",
+    "tools": [],
+    "version": "0.62.0"
+  }
+}
