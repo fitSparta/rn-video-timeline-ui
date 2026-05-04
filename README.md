@@ -5,7 +5,7 @@ Works on iOS, Android and Web (via `react-native-web`).
 
 ## Demo
 
-[Live web example](https://html-preview.github.io/?url=https://github.com/fitSparta/rn-video-timeline-ui/blob/develop/example/dist/index.html)
+[Live web example](https://html-preview.github.io/?url=https://github.com/fitSparta/rn-video-timeline-ui/blob/initial/example/dist/index.html)
 
 ## Installation
 
