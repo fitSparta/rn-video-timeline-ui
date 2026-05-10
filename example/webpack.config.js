@@ -5,25 +5,26 @@ const webpack = require('webpack');
 const root = path.resolve(__dirname, '..');
 const rootModules = path.join(root, 'node_modules');
 
-module.exports = {
+module.exports = (env, argv) => {
+  const isProduction = argv.mode === 'production';
+
+  return {
   entry: './index.web.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: './',
+    publicPath: isProduction ? './' : '/',
   },
   resolve: {
     alias: {
-      'react-native$': 'react-native-web'
-      // Force a single copy of React, React DOM, React Native Web and the
-      // animation/gesture stacks so the library and the example share one
-      // module instance (avoids "Invalid hook call" in monorepo setups).
-      // react: path.join(rootModules, 'react'),
-      // 'react-dom': path.join(rootModules, 'react-dom'),
-      // 'react-native-web': path.join(rootModules, 'react-native-web'),
-      // 'react-native-reanimated': path.join(rootModules, 'react-native-reanimated'),
-      // 'react-native-gesture-handler': path.join(rootModules, 'react-native-gesture-handler'),
-      // 'react-native-worklets': path.join(rootModules, 'react-native-worklets'),
+      'react-native$': 'react-native-web',
+      'rn-video-timeline-ui': path.resolve(root, 'src'),
+      react: path.join(__dirname, 'node_modules', 'react'),
+      'react-dom': path.join(__dirname, 'node_modules', 'react-dom'),
+      'react-native-web': path.join(__dirname, 'node_modules', 'react-native-web'),
+      'react-native-reanimated': path.join(__dirname, 'node_modules', 'react-native-reanimated'),
+      'react-native-gesture-handler': path.join(__dirname, 'node_modules', 'react-native-gesture-handler'),
+      'react-native-worklets': path.join(__dirname, 'node_modules', 'react-native-worklets'),
     },
     extensions: ['.web.js', '.js', '.web.jsx', '.jsx', '.web.ts', '.ts', '.web.tsx', '.tsx'],
   },
@@ -31,7 +32,11 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx|ts|tsx)$/,
-        exclude: /node_modules/,
+        include: [
+          path.resolve(__dirname, 'src'),
+          path.resolve(__dirname, '..', 'src'),
+          path.resolve(__dirname, 'index.web.js'),
+        ],
         use: {
           loader: 'babel-loader',
           options: {
@@ -81,4 +86,5 @@ module.exports = {
     hot: true,
     historyApiFallback: true,
   },
+  };
 };
